@@ -1,9 +1,11 @@
 // SPDX-License-Identifier: Apache-2.0
 // SPDX-FileCopyrightText: Copyright The Lance Authors
 
+#[cfg(feature = "geo")]
 use datafusion::prelude::SessionContext;
 
 /// Register UDF functions to datafusion context.
+#[cfg(feature = "geo")]
 pub fn register_functions(ctx: &SessionContext) {
     ctx.register_udf(geodatafusion::udf::geo::measurement::Area::new().into());
     ctx.register_udf(geodatafusion::udf::geo::measurement::Distance::new().into());

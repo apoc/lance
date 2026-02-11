@@ -4,5 +4,8 @@
 use datafusion::prelude::SessionContext;
 
 pub fn register_functions(ctx: &SessionContext) {
+    #[cfg(feature = "geo")]
     geodatafusion::register(ctx);
+    #[cfg(not(feature = "geo"))]
+    let _ = ctx;
 }
